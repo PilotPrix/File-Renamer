@@ -1,11 +1,19 @@
+import os
 files = ["Copy of copy of document", "Copy of copy of document"]
 
-userInput = input()
+folderSelection = input() + "/"
+# impliment error safe mechanism
+path, dirs, files = next(os.walk(folderSelection))
+numberOfFiles = len(files)
+print("There are", numberOfFiles, "in this folder")
+
+userInput = input("Make your file selection: ")
+
 
 for i in userInput:
   if i == " ":
     userInput = userInput.replace(" ", "")
-    
+
 userInput = userInput.split(",")
 
 numbers = []
@@ -26,14 +34,21 @@ for i in userInput:
     print("Error, you suck")
 
 for i in range(len(numbers)):
-  files[i]
+  rename = files[i] + " " + str(numbers[i])
+  
+  os.rename(folderSelection + files[i], folderSelection + rename)
 
 
 for i in ranges:
   i = i.split("-")
 
-  startingNum = i[0]
-  endingNum = i[1]
+  startingNum = int(i[0])
+  endingNum = int(i[1])
 
-  for j in range(startingNum, endingNum):
-    files[j]
+  for j in range(startingNum, endingNum + 1):
+    rename = files[j] + " " + str(j)
+    os.rename(folderSelection + files[j], folderSelection + rename)
+
+
+# Fail safe: ensure no overlaps (eg. "3, 1-7" "1-4, 3-6")
+# Add renaming customization input
