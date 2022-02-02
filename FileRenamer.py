@@ -51,4 +51,4 @@ for i in ranges:
 
 
 # Fail safe: ensure no overlaps (eg. "3, 1-7" "1-4, 3-6")
-# Add renaming customization input
+# Add renaming customization input (remember, don't modify anything after the file extension, only before it)
